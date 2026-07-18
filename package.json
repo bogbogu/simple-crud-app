@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/bogbogu/simple-crud-app#readme",
   "dependencies": {
+    "dotenv": "^17.4.2",
     "express": "^5.2.1",
     "mongodb": "^7.5.0",
     "mongoose": "^9.7.4"
