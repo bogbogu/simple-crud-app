@@ -2,6 +2,8 @@ const express = require('express')
 const app = express()
 const mongoose = require('mongoose')
 
+const mongoUri = process.env.MONGO_URI;
+
 // middleware
 app.use(express.json());
 app.use(express.urlencoded({extended:false}));
@@ -17,8 +19,12 @@ app.get('/', (req, res) => {
     res.send('Hello World')
 })
 
+if (!mongoUri) {
+    console.log("MONGO_URI is not set. Please set it in your environment before starting the server.");
+    process.exit(1);
+}
 
-mongoose.connect("mongodb+srv://REDACTED:REDACTED@REDACTED/REDACTED")
+mongoose.connect(mongoUri)
     .then(() => {
         console.log("Connected to database!");
 
